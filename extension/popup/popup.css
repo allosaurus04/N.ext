@@ -363,3 +363,22 @@ button { font-family: inherit;}
 }
 
 .footer-sep { color: var(--yellow);}
+
+/* for bugs added link */
+.bug-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--yellow);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 2px;
+  transition: color 0.15s ease;
+}
+.bug-link:hover { color: var(--orange); }
+.bug-link:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+.gh-icon { flex-shrink: 0; }
