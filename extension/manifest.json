@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "N.ext",
+  "version": "1.0.0",
+  "content_scripts": [
+    {
+      "matches": ["https://canvas.nus.edu.sg/*"],
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ],
+  "web_accessible_resources": [
+  {
+    "resources": ["assets/lion.jpg"],
+    "matches": ["<all_urls>"]
+  }
+],
+  "permissions": ["storage", "downloads"]
+}

@@ -1,0 +1,26 @@
+{
+  "name": "n.ext",
+  "version": "1.0.0",
+  "description": "A Chrome extension for NUS students",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anushakamran06/N.ext.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/anushakamran06/N.ext/issues"
+  },
+  "homepage": "https://github.com/anushakamran06/N.ext#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.6.0",
+    "globals": "^17.7.0"
+  }
+}

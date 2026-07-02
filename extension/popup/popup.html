@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>N.ext</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+
+  <header class="header">
+    <img src="../assets/lion.jpg" alt="N.ext logo" class="logo" />
+    <div class="header-text">
+      <span class="brand-name">N.EXT</span>
+      <span class="tagline">Your Canvas, evolved</span>
+    </div>
+  </header>
+
+  <!-- nav bar -->
+  <nav class="tab-nav">
+    <button class="tab-btn active" data-tab="deadlines">Deadlines</button>
+    <button class="tab-btn" data-tab="downloads">Downloads</button>
+    <button class="tab-btn" data-tab="site">Site</button>
+  </nav>
+
+  <main class="panels">
+    <section id="panel-deadlines" class="panel active">
+
+      <div class="setting-row">
+        <div class="setting-label-group">
+          <span class="setting-label">Deadline Alerts</span>
+          <span class="setting-sub">Show upcoming deadlines on your dashboard cards.</span>
+        </div>
+        <button class="toggle" data-key="DeadlinesEnabled" role="switch" aria-checked="true">
+          <span class="toggle-knob"></span>
+        </button>
+      </div>
+
+      <div class="sliders-group" id="sliders-group">
+
+        <div class="slider-block">
+          <div class="slider-head">
+            <label class="slider-label" for="slider-days">Look Ahead</label>
+            <span class="slider-value"><span id="val-days">30</span> days</span>
+          </div>
+          <input
+            type="range"
+            id="slider-days"
+            class="slider"
+            data-key="LookAheadDays"
+            min="5" max="100" value="30"
+          />
+        </div>
+
+        <div class="slider-block">
+          <div class="slider-head">
+            <label class="slider-label" for="slider-per-subject">Customise Deadlines Per Subject</label>
+            <span class="slider-value"><span id="val-per-subject">3</span></span>
+          </div>
+          <input
+            type="range"
+            id="slider-per-subject"
+            class="slider"
+            data-key="MaxDeadlines"
+            min="1" max="10" value="3"
+          />
+        </div>
+
+      </div>
+    </section>
+<!-- downloads portion for popup-->
+    <section id="panel-downloads" class="panel">
+      <div class="coming-soon">
+        <div class="coming-soon-icon">&#8681;</div>
+        <p class="coming-soon-tile">Coming soon</p>
+        <p class="coming-soon-sub">Auto-download study materials from Canvas.</p>
+      </div>
+    </section>
+    <section id="panel-site" class="panel">
+      <div class="setting-row">
+        <div class="setting-label-group">t
+          <span class="setting-label">NUS theme</span>
+          <span class="setting-sub">Turn off to restore Canvas's default look.</span>
+        </div>
+        <button class="toggle" data-key="DisableUI" role="switch" aria-checked="true">
+          <span class="toggle-knob"></span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>N.ext</span>
+    <span class="footer-sep">·</span>
+    <span>Version 1.0.0</span>
+  </footer>
+
+  <script src="popup.js" defer></script>
+</body>
+</html>
