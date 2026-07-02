@@ -14,7 +14,7 @@ function checkDashboardReady() {
         mutation.type === "childList" &&
         mutation.target === document.querySelector("#DashboardCard_Container")
       ) {
-        chrome.storage.local.get("isEnabledDeadline", (result) => {
+        chrome.storage.sync.get("isEnabledDeadline", (result) => {
           if (result.isEnabledDeadline) {
             getDeadlines();
           }
@@ -41,7 +41,7 @@ if (domain.includes("canvas")) {
 
 // connect back to popup user preferences
 function getDeadlines() {
-    chrome.storage.local.get( ["MaxDeadlines", "LookAheadDays", "DisableUI"], 
+    chrome.storage.sync.get( ["MaxDeadlines", "LookAheadDays", "DisableUI"], 
         function (result) {
             MaxDeadlines = result.MaxDeadlines;
             LookAheadDays = result.LookAheadDays;

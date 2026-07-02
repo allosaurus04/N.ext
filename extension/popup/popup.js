@@ -1,5 +1,5 @@
 const DEFAULTS = {
-  DeadlinesEnabled: true,
+  isEnabledDeadline: true,
   LookAheadDays: 30,
   MaxDeadlines: 6,
   DisableUI: false,
@@ -38,7 +38,7 @@ function applyDeadlineDimming(isEnabled) {
       setToggleState(toggle, next);
       chrome.storage.sync.set({ [toggle.dataset.key]: next });
 
-      if (toggle.dataset.key === 'DeadlinesEnabled') {
+      if (toggle.dataset.key === 'isEnabledDeadline') {
         applyDeadlineDimming(next);
       }
     });
@@ -69,7 +69,7 @@ function applyDeadlineDimming(isEnabled) {
       }
     });
 
-    applyDeadlineDimming(stored.DeadlinesEnabled);
+    applyDeadlineDimming(stored.isEnabledDeadline);
 
     //sliders
     const daysSlider = document.getElementById('slider-days');
