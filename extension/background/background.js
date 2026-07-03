@@ -1,2 +1,3 @@
 // refer to content.js 
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {};
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {});
+
