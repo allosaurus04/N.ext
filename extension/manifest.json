@@ -3,7 +3,7 @@
   "name": "N.ext",
   "version": "1.1.1",
   "description": "A Chrome extension for Canvas, made for NUS students. Hence, the name N.ext.",
-  "browser_action": {
+  "action": {
     "default_popup": "popup/popup.html"
   },
   "background": {
@@ -12,7 +12,7 @@
   "content_scripts": [
     {
       "matches": ["https://canvas.nus.edu.sg/*"],
-      "js": ["content/content.js"],
+      "js": ["content/content.js", "content/file_downloader.js"],
       "css": ["content/content.css"]
     }
   ],

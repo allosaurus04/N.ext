@@ -120,6 +120,67 @@ function getCourseId(card) {
   return match ? parseInt(match[0], 10) : null;
 }
 
+function injectDownloadButton(card, courseId) {
+  const btn = document.createElement("button");
+  btn.dataset.courseId = courseId;
+  btn.className = "download-btn";
+  btn.innerHTML = `<img class="download-btn-img" src="${chrome.runtime.getURL("assets/download.png")}">`;
+  card.querySelector(".ic-DashboardCard__header_image").appendChild(btn);
+}
+
+function getTasksForCourse(data, courseId) {
+  return data.filter(
+    (t) =>
+      t.course_id === courseId &&
+      (t.plannable_type === "assignment" || t.plannable_type === "quiz")
+  );
+}
+
+function renderDeadlineRow(container, task, deadline) {
+  const row = makeEl("div", "deadline-container", container);
+  const title = task.plannable.title;
+
+  const name = makeEl(
+    "a",
+    "deadline-text",
+    row,
+    title.length > 14 ? title.slice(0, 14) + "..." : title
+  );
+  name.href = task.html_url;
+  name.title = title;
+  name.style.fontSize = "13px";
+
+  const countdown = makeEl("div", "deadline-countdown", row, deadline.label);
+  countdown.style.fontSize = "13px";
+  countdown.style.color = deadline.color;
+}
+
+function renderEmptyState(container) {
+  const row = makeEl("div", "deadline-container", container);
+  row.style.fontSize = "13px";
+  makeEl("p", "deadline-empty", row, "Have a break, have a kit-kat.");
+}
+
+function renderDeadlines(card, tasks) {
+  const container = makeEl("div", "container", card);
+  const header = makeEl("div", "header-container", container);
+
+  let count = 0;
+  for (const task of tasks) {
+    if (count >= MaxDeadlines) break;
+
+    const deadline = describeDeadline(task.plannable_date);
+    if (!deadline) continue;
+    count++;
+
+    renderDeadlineRow(container, task, deadline);
+  }
+
+  makeEl("h3", "card-header", header, `Deadlines (${count})`);
+
+  if (count === 0) renderEmptyState(container);
+}
+
 function injectTasks(data) {
   if (alreadyInjected()) return;
 
@@ -128,54 +189,76 @@ function injectTasks(data) {
       const courseId = getCourseId(card);
       if (courseId === null) return;
 
-      const btn = document.createElement("button");
-      btn.className = "download-btn";
-      btn.innerHTML = `<img class="download-btn-img" src="${chrome.runtime.getURL("assets/download.png")}">`; // self contained no ref to background
-      card.querySelector(".ic-DashboardCard__header_image").appendChild(btn);
-
-      const container = makeEl("div", "container", card);
-      const header = makeEl("div", "header-container", container);
-
-      const tasks = data.filter(
-        (t) =>
-          t.course_id === courseId &&
-          (t.plannable_type === "assignment" || t.plannable_type === "quiz")
-      );
-
-      let count = 0;
-      for (const task of tasks) {
-        if (count >= MaxDeadlines) break;
-
-        const deadline = describeDeadline(task.plannable_date);
-        if (!deadline) continue;
-        count++;
-
-        const row = makeEl("div", "deadline-container", container);
-        const title = task.plannable.title;
-        const name = makeEl(
-          "a",
-          "deadline-text",
-          row,
-          title.length > 14 ? title.slice(0, 14) + "..." : title
-        );
-        name.href = task.html_url;
-        name.title = title;
-        name.style.fontSize = "13px";
-
-        const countdown = makeEl("div", "deadline-countdown", row, deadline.label);
-        countdown.style.fontSize = "13px";
-        countdown.style.color = deadline.color;
-      }
-
-      makeEl("h3", "card-header", header, `Deadlines (${count})`);
-
-      if (count === 0) {
-        const row = makeEl("div", "deadline-container", container);
-        row.style.fontSize = "13px";
-        makeEl("p", "deadline-empty", row, "Have a break, have a kit-kat.");
-      }
+      injectDownloadButton(card, courseId);
+      renderDeadlines(card, getTasksForCourse(data, courseId));
     });
   } catch (e) {
     console.log(e);
   }
+}
+
+// prettier-ignore
+{
+// initial function in content.js broken down 
+
+// function injectTasks(data) {
+//   if (alreadyInjected()) return;
+
+//   try {
+//     document.querySelectorAll(".ic-DashboardCard").forEach((card) => {
+//       const courseId = getCourseId(card);
+//       if (courseId === null) return;
+
+//       const btn = document.createElement("button");
+//       btn.dataset.courseId = courseId;
+//       btn.className = "download-btn";
+//       btn.innerHTML = `<img class="download-btn-img" src="${chrome.runtime.getURL("assets/download.png")}">`; // self contained no ref to background
+//       card.querySelector(".ic-DashboardCard__header_image").appendChild(btn);
+
+//       const container = makeEl("div", "container", card);
+//       const header = makeEl("div", "header-container", container);
+
+//       const tasks = data.filter(
+//         (t) =>
+//           t.course_id === courseId &&
+//           (t.plannable_type === "assignment" || t.plannable_type === "quiz")
+//       );
+
+//       let count = 0;
+//       for (const task of tasks) {
+//         if (count >= MaxDeadlines) break;
+
+//         const deadline = describeDeadline(task.plannable_date);
+//         if (!deadline) continue;
+//         count++;
+
+//         const row = makeEl("div", "deadline-container", container);
+//         const title = task.plannable.title;
+//         const name = makeEl(
+//           "a",
+//           "deadline-text",
+//           row,
+//           title.length > 14 ? title.slice(0, 14) + "..." : title
+//         );
+//         name.href = task.html_url;
+//         name.title = title;
+//         name.style.fontSize = "13px";
+
+//         const countdown = makeEl("div", "deadline-countdown", row, deadline.label);
+//         countdown.style.fontSize = "13px";
+//         countdown.style.color = deadline.color;
+//       }
+
+//       makeEl("h3", "card-header", header, `Deadlines (${count})`);
+
+//       if (count === 0) {
+//         const row = makeEl("div", "deadline-container", container);
+//         row.style.fontSize = "13px";
+//         makeEl("p", "deadline-empty", row, "Have a break, have a kit-kat.");
+//       }
+//     });
+//   } catch (e) {
+//     console.log(e);
+//   }
+// }
 }
