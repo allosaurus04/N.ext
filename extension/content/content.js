@@ -130,7 +130,7 @@ function injectTasks(data) {
 
       const btn = document.createElement("button");
       btn.className = "download-btn";
-      btn.innerHTML = `<img class="download-btn-img" src="${chrome.runtime.getURL("assets/download.png")}">`;
+      btn.innerHTML = `<img class="download-btn-img" src="${chrome.runtime.getURL("assets/download.png")}">`; // self contained no ref to background
       card.querySelector(".ic-DashboardCard__header_image").appendChild(btn);
 
       const container = makeEl("div", "container", card);
@@ -179,5 +179,3 @@ function injectTasks(data) {
     console.log(e);
   }
 }
-
-// TODO: js for filedownloader. how to connect, download png
