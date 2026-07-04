@@ -9,7 +9,6 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                 conflictAction: 'uniquify',
             });
         }
-
-        sendResponse({ status: 'ok', count: fileList.length });
+        sendResponse({status: 'ok', count: fileList.length});
     }
 });
