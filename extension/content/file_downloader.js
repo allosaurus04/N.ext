@@ -4,7 +4,7 @@ document.addEventListener('click', (event) => {
 
     const courseId = btn.dataset.courseId;
     event.preventDefault();
-    event.stopPropogation();
+    event.stopPropagation();
 
     btn.disabled = true;
 
@@ -15,12 +15,13 @@ document.addEventListener('click', (event) => {
 
 async function fetchCourseFiles(courseId) {
     const response = await fetch(`/api/v1/courses/${courseId}/files?per_page=100`, { credentials: 'same-origin' });
+    console.log('files api status:', response.status);
     if (!response.ok) {
         throw new Error(`Failed to fetch files for course ${courseId}: ${response.status} ${response.statusText}`);
     }
     return response.json();
-
 }
+
 async function downloadCourseFiles(courseId) {
     const files = await fetchCourseFiles(courseId);
     console.log('Fetched files:', files.length,'files');
@@ -30,18 +31,22 @@ async function downloadCourseFiles(courseId) {
         const sanitizedFilename = file.display_name.replace(/[<>:"/\\|?*]+/g, '_');
         return { url: file.url, filename: sanitizedFilename };
     });
-    console.log('Transformed file list:', fileList.length,'files');     
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
+    console.log('Transformed file list:', fileList.length,'files');  
+    // send list to background
+    chrome.runtime.sendMessage({type: 'DOWNLOAD_FILES', files: fileList}, (response) => {
+        if (chrome.runtime.lastError) {
+            console.error('Didnt send to service worker');
+        } else {
+            console.log('Successfully sent files to service worker for download:', response);
+        }
+        });
+    }
+    
+// console check
+// const testNames = [
+//   "Lecture 1: Topic1_R_Introduction.pdf",
+//   "Tutorial 3 (What/Why?).docx",
+//   "CS1010 <draft>.txt",
+//   "normal_file.pdf"
+// ];
+// testNames.forEach(n => console.log(n, "to", n.replace(/[<>:"/\\|?*]+/g, '_')));

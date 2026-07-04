@@ -1,4 +1,3 @@
-// DOM scraping using NEW DASHBOARD UI
 const domain = window.location.origin;
 const current_page = window.location.pathname;
 let MaxDeadlines = 6;
@@ -31,15 +30,14 @@ if (domain.includes("canvas")) {
   checkDashboardReady();
 }
 
-// console check before getDeadlines function 
-// fetch('/api/v1/planner/items?per_page=10')
-//   .then(r => r.json())
-//   .then(console.log)
+// api check
+fetch('/api/v1/planner/items?per_page=10')
+  .then(r => r.json())
+  .then(console.log('api ok'))
 
-// connect back to popup user preferences
 function getDeadlines() {
   console.log('getDeadlines fired');
-    chrome.storage.sync.get({ MaxDeadlines: 6, LookAheadDays: 30, DisableUI: false }, 
+    chrome.storage.sync.get({ MaxDeadlines: 6, LookAheadDays: 30, DisableUI: false }, //convert to object with default instead of list
         function (result) {
             MaxDeadlines = result.MaxDeadlines;
             LookAheadDays = result.LookAheadDays;
@@ -124,7 +122,7 @@ function injectDownloadButton(card, courseId) {
   btn.className = "download-btn";
   btn.innerHTML = `<img class="download-btn-img" src="${chrome.runtime.getURL("assets/download.png")}">`;
   card.querySelector(".ic-DashboardCard__header_hero").appendChild(btn);
-}
+} //canvas changed DOM, .ic-DashboardCard__header_image to .ic-DashboardCard__header_hero. Ran in devtools document.querySelector(".ic-DashboardCard").innerHTML
 
 function getTasksForCourse(data, courseId) {
   return data.filter(
