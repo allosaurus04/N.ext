@@ -1,6 +1,6 @@
 {
   "name": "n.ext",
-  "version": "1.2.3",
+  "version": "1.3.4",
   "description": "A Chrome extension for NUS students",
   "main": "index.js",
   "scripts": {

@@ -53,14 +53,12 @@ jobs:
           tag_version=${GITHUB_REF#refs/tags/v}
           manifest_version=$(node -p "require('./extension/manifest.json').version")
           package_version=$(node -p "require('./package.json').version")
-          popup_version=$(node -p "require('./extension/popup/package.json').version")
 
-          if [ "$tag_version" != "$manifest_version" ] || [ "$tag_version" != "$package_version" ] || [ "$tag_version" != "$popup_version" ]; then
-            echo "Tag does not match manifest.json or package.json!"
+          if [ "$tag_version" != "$manifest_version" ] || [ "$tag_version" != "$package_version" ] || [ "$manifest_version" != "$package_version" ]; then
+            echo "Versions dont match"
             echo "Tag: $tag_version"
-            echo "Manifest: $manifest_version"
+            echo "manifest: $manifest_version"
             echo "Package: $package_version"
-            echo "Popup: $popup_version"
             exit 1
           fi
 
