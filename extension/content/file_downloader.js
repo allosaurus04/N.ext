@@ -27,7 +27,7 @@ async function downloadCourseFiles(courseId) {
     console.log('Fetched files:', files.length,'files');
     // Transform the raw Canvas file objects into a minimal list of { url, filename } pairs
     const fileList = files.map(file => {
-        // Sanitize filename: remove illegal path characters and use forward slashes for subfolders
+        // Sanitize filename
         const sanitizedFilename = file.display_name.replace(/[<>:"/\\|?*]+/g, '_');
         return { url: file.url, filename: sanitizedFilename };
     });
@@ -50,3 +50,5 @@ async function downloadCourseFiles(courseId) {
 //   "normal_file.pdf"
 // ];
 // testNames.forEach(n => console.log(n, "to", n.replace(/[<>:"/\\|?*]+/g, '_')));
+
+// TODO: pagination is first 100 files only, need to handle pagination for more than 100 files. See https://canvas.instructure.com/doc/api/file.file.html#method.files.index
