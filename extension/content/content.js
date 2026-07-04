@@ -3,26 +3,23 @@ const domain = window.location.origin;
 const current_page = window.location.pathname;
 let MaxDeadlines = 6;
 let LookAheadDays = 30;
+// eslint-disable-next-line no-unused-vars
 let DisableUI = false;
 
 function checkDashboardReady() {
+  console.log("path:", current_page);
   if (current_page !== "/" && current_page !== "") return;
+  console.log("observer attaching");
 
-  const callback = (mutationList) => {
-    for (const mutation of mutationList) {
-      if (
-        mutation.type === "childList" &&
-        mutation.target === document.querySelector("#DashboardCard_Container")
-      ) {
-        chrome.storage.sync.get("isEnabledDeadline", (result) => {
-          if (result.isEnabledDeadline) {
-            getDeadlines();
-          }
-        });
-      }
-    }
-  };
-
+  const callback = () => {
+  if (document.querySelector(".ic-DashboardCard") && !alreadyInjected()) {
+    console.log("cards found, fetching");
+    chrome.storage.sync.get({isEnabledDeadline: true}, (result) => {
+      console.log("toggle:", result.isEnabledDeadline);
+      if (result.isEnabledDeadline) getDeadlines();
+    });
+  }
+};
   var config = { attributes: true, childList: true, characterData: true, subtree: true}
 
   const observer = new MutationObserver(callback);
@@ -41,7 +38,8 @@ if (domain.includes("canvas")) {
 
 // connect back to popup user preferences
 function getDeadlines() {
-    chrome.storage.sync.get( ["MaxDeadlines", "LookAheadDays", "DisableUI"], 
+  console.log('getDeadlines fired');
+    chrome.storage.sync.get({ MaxDeadlines: 6, LookAheadDays: 30, DisableUI: false }, 
         function (result) {
             MaxDeadlines = result.MaxDeadlines;
             LookAheadDays = result.LookAheadDays;
@@ -125,7 +123,7 @@ function injectDownloadButton(card, courseId) {
   btn.dataset.courseId = courseId;
   btn.className = "download-btn";
   btn.innerHTML = `<img class="download-btn-img" src="${chrome.runtime.getURL("assets/download.png")}">`;
-  card.querySelector(".ic-DashboardCard__header_image").appendChild(btn);
+  card.querySelector(".ic-DashboardCard__header_hero").appendChild(btn);
 }
 
 function getTasksForCourse(data, courseId) {
@@ -198,7 +196,7 @@ function injectTasks(data) {
 }
 
 // prettier-ignore
-{
+
 // initial function in content.js broken down 
 
 // function injectTasks(data) {
@@ -261,4 +259,3 @@ function injectTasks(data) {
 //     console.log(e);
 //   }
 // }
-}
