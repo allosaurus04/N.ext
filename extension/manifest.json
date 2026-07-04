@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "N.ext",
-  "version": "1.1.1",
+  "version": "1.2.3",
   "description": "A Chrome extension for Canvas, made for NUS students. Hence, the name N.ext.",
   "action": {
     "default_popup": "popup/popup.html"
