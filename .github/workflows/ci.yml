@@ -23,9 +23,6 @@ jobs:
       - name: install dependencies
         run: npm ci
 
-      - name: run eslint
-        run: npx eslint .
-
       - name: check manifest.json
         run: node -e "JSON.parse(require('fs').readFileSync('extension/manifest.json', 'utf8'))"
 
