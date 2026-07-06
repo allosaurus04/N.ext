@@ -12,7 +12,7 @@ function createClient({ baseUrl, token }) {
     });
 
     if (!response.ok) {
-      throw new Error(`Canvas API ${response.status}: ${path}`);
+      throw new Error(`Canvas API ${response.status}: ${path}` );
     }
     return response; 
   }
@@ -21,7 +21,7 @@ function createClient({ baseUrl, token }) {
     let results = [];
     let next = null;
 
-    let response = await request(path, { ...params, per_page: 100 });
+    let response = await request(path, {...params, per_page: 100});
     results = results.concat(await response.json());
 
     while ((next = getNextLink(response.headers.get('link')))) {
@@ -40,9 +40,9 @@ function createClient({ baseUrl, token }) {
 // canvas pagination needs next link header of the response to know if there is next page so raw json
 function getNextLink(linkHeader) {
   if (!linkHeader) return null;
-  const match = linkHeader.match(/<([^>]+)>;\s*rel="next"/);
+  const match = linkHeader.match(/<([^>]+)>;\s*rel="next"/); 
   return match ? match[1] : null;
 }
 
-module.exports = { createClient };
+module.exports = {createClient};
 
