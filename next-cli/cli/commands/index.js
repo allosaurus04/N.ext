@@ -23,7 +23,7 @@ async function main() {
       break;
     }
     case 'files': {
-        const files = await downloadFiles(client); // TODO
+        const files = await downloadCourseFiles(client); // TODO
         printFiles(files);
         break;
     };
