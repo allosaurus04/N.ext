@@ -1,8 +1,10 @@
 {
-  "name": "n.ext",
+  "name": "N.ext",
   "version": "1.3.4",
   "description": "A Chrome extension for NUS students",
-  "main": "index.js",
+  "bin": {
+    "next-cli": "./cli/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

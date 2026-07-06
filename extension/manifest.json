@@ -13,12 +13,12 @@
     {
       "matches": ["https://canvas.nus.edu.sg/*"],
       "js": ["content/content.js", "content/file_downloader.js"],
-      "css": ["content/content.css"]
+      "css": ["content/content.css", "content/theme.css"]
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["assets/lion.jpg", "assets/download.png"],
+      "resources": ["assets/lion.jpg", "assets/download.png", "assets/linus.png"],
       "matches": ["https://canvas.nus.edu.sg/*"]
     }
   ],

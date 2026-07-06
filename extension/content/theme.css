@@ -1,0 +1,100 @@
+/* ══════════════════════════════════════════════
+   N.ext — NUS theme
+   Inert unless <html> has .next-nus-theme
+   ══════════════════════════════════════════════ */
+
+html.next-nus-theme {
+  /* Palette — darker NUS blue family */
+  --nus-ink:        #001B3F;  /* near-black navy */
+  --nus-blue:       #012D66;  /* primary — darker than official #003D7C */
+  --nus-blue-mid:   #0A3F82;  /* hover / raised surfaces */
+  --nus-orange:     #EF7C00;  /* official NUS orange, used sparingly */
+  --nus-gold:       #E8A020;  /* secondary accent */
+  --nus-paper:      #F6F8FC;  /* cool off-white page tint */
+}
+
+/* ── Page + global nav ── */
+html.next-nus-theme body {
+  background-color: var(--nus-paper) !important;
+}
+
+html.next-nus-theme .ic-app-header,
+html.next-nus-theme #header {
+  background: linear-gradient(180deg, var(--nus-blue) 0%, var(--nus-ink) 100%) !important;
+}
+
+html.next-nus-theme .ic-app-header__menu-list-item--active {
+  border-inline-start: 4px solid var(--nus-orange) !important;
+}
+
+/* ── Buttons + links ── */
+html.next-nus-theme .btn-primary,
+html.next-nus-theme .Button--primary {
+  background-color: var(--nus-orange) !important;
+  border-color: var(--nus-orange) !important;
+  color: #fff !important;
+}
+html.next-nus-theme .btn-primary:hover,
+html.next-nus-theme .Button--primary:hover {
+  background-color: var(--nus-gold) !important;
+  border-color: var(--nus-gold) !important;
+}
+
+html.next-nus-theme a:not(.ic-DashboardCard__link):not(.deadline-text) {
+  color: var(--nus-blue-mid);
+}
+
+/* ── Dashboard cards: shared treatment ── */
+html.next-nus-theme .ic-DashboardCard {
+  border: 1px solid var(--nus-ink) !important;
+  box-shadow: 3px 3px 0 var(--nus-ink) !important;
+  border-radius: 6px !important;
+  overflow: hidden;
+}
+
+html.next-nus-theme .ic-DashboardCard__header_hero {
+  background-image: none !important;  /* drop Canvas default art */
+  opacity: 1 !important;              /* Canvas dims heroes to ~0.26 over images */
+}
+
+/* ── 10-course palette: navy/steel core, two warm accents ── */
+html.next-nus-theme .ic-DashboardCard:nth-of-type(1)  .ic-DashboardCard__header_hero { background-color: var(--nus-blue)  !important; }
+html.next-nus-theme .ic-DashboardCard:nth-of-type(2)  .ic-DashboardCard__header_hero { background-color: var(--nus-orange)!important; }
+html.next-nus-theme .ic-DashboardCard:nth-of-type(3)  .ic-DashboardCard__header_hero { background-color: #14508F !important; } /* steel blue */
+html.next-nus-theme .ic-DashboardCard:nth-of-type(4)  .ic-DashboardCard__header_hero { background-color: #5B3A8E !important; } /* deep violet */
+html.next-nus-theme .ic-DashboardCard:nth-of-type(5)  .ic-DashboardCard__header_hero { background-color: #0E5F63 !important; } /* dark teal */
+html.next-nus-theme .ic-DashboardCard:nth-of-type(6)  .ic-DashboardCard__header_hero { background-color: var(--nus-gold)  !important; }
+html.next-nus-theme .ic-DashboardCard:nth-of-type(7)  .ic-DashboardCard__header_hero { background-color: #7D1F3C !important; } /* maroon */
+html.next-nus-theme .ic-DashboardCard:nth-of-type(8)  .ic-DashboardCard__header_hero { background-color: #23653A !important; } /* forest */
+html.next-nus-theme .ic-DashboardCard:nth-of-type(9)  .ic-DashboardCard__header_hero { background-color: #4A5568 !important; } /* slate */
+html.next-nus-theme .ic-DashboardCard:nth-of-type(10) .ic-DashboardCard__header_hero { background-color: var(--nus-ink)   !important; }
+/* course 11+ keeps Canvas's own colour */
+
+/* ── Signature: LiNUS peeking from the corner ──
+   Needs assets/linus.png in web_accessible_resources.
+   pointer-events:none so he never blocks clicks. */
+html.next-nus-theme body::after {
+  content: "";
+  position: fixed;
+  bottom: -14px;
+  right: 18px;
+  width: 88px;
+  height: 88px;
+  background: url("chrome-extension://__MSG_@@extension_id__/assets/linus.png")
+              center / contain no-repeat;
+  transform: rotate(-6deg);
+  transform-origin: bottom center;
+  transition: transform 0.25s ease, bottom 0.25s ease;
+  pointer-events: none;
+  z-index: 9999;
+  filter: drop-shadow(2px 2px 0 var(--nus-ink));
+}
+
+html.next-nus-theme body:hover::after {
+  bottom: -6px;
+  transform: rotate(0deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.next-nus-theme body::after { transition: none; }
+}

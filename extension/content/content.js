@@ -193,8 +193,6 @@ function injectTasks(data) {
   }
 }
 
-// prettier-ignore
-
 // initial function in content.js broken down 
 
 // function injectTasks(data) {
@@ -257,3 +255,11 @@ function injectTasks(data) {
 //     console.log(e);
 //   }
 // }
+
+function applyTheme(on) {
+  document.documentElement.classList.toggle("next-nus-theme", on);
+}
+chrome.storage.sync.get({ DisableUI: false }, ({ DisableUI }) => applyTheme(DisableUI));
+chrome.storage.onChanged.addListener((changes, area) => {
+  if (area === "sync" && changes.DisableUI) applyTheme(changes.DisableUI.newValue);
+});

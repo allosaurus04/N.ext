@@ -15,7 +15,7 @@ document.addEventListener('click', (event) => {
 
 async function fetchCourseFiles(courseId) {
     const response = await fetch(`/api/v1/courses/${courseId}/files?per_page=100`, { credentials: 'same-origin' });
-    console.log('files api status:', response.status);
+    console.log('files api status:', response.status); //using cookies no auth 
     if (!response.ok) {
         throw new Error(`Failed to fetch files for course ${courseId}: ${response.status} ${response.statusText}`);
     }
