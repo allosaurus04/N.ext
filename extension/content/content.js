@@ -1,5 +1,12 @@
 const domain = window.location.origin;
 const current_page = window.location.pathname;
+const DOWNLOAD_ICON = `
+<svg class="download-btn-img" viewBox="0 0 32 32" width="32" height="32" aria-hidden="true">
+  <circle cx="16" cy="16" r="16" fill="#1A0F14"/>
+  <path d="M16 8v11m0 0l-4.5-4.5M16 19l4.5-4.5" fill="none" stroke="#fff"
+        stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M10 22h12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/>
+</svg>`;
 let MaxDeadlines = 6;
 let LookAheadDays = 30;
 // eslint-disable-next-line no-unused-vars
@@ -116,13 +123,15 @@ function getCourseId(card) {
   return match ? parseInt(match[0], 10) : null;
 }
 
+
 function injectDownloadButton(card, courseId) {
   const btn = document.createElement("button");
   btn.dataset.courseId = courseId;
   btn.className = "download-btn";
-  btn.innerHTML = `<img class="download-btn-img" src="${chrome.runtime.getURL("assets/download.png")}">`;
+  btn.setAttribute("aria-label", "Download course files");
+  btn.innerHTML = DOWNLOAD_ICON;
   card.querySelector(".ic-DashboardCard__header").appendChild(btn);
-} 
+}
 //canvas changed DOM, .ic-DashboardCard__header_image to .ic-DashboardCard__header_hero. Ran in devtools document.querySelector(".ic-DashboardCard").innerHTML
 
 // got opacity issue now (courses that got background the download button doesnt show), moved it out of hero 
