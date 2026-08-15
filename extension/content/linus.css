@@ -1,0 +1,64 @@
+#next-linus {
+  position: fixed;
+  bottom: 0px;
+  right: 18px;
+  width: 96px;
+  height: 140px;
+  z-index: 9999;
+  pointer-events: none;
+  display: none;
+  filter: drop-shadow(2px 2px 0 orange);
+}
+
+html.next-nus-theme #next-linus {
+  display: block;
+}
+
+#next-linus svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#next-linus[data-mood="none"] .linus-anim {
+  animation: linus-bob 3.4s ease-in-out infinite;
+}
+
+@keyframes linus-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+/* blink */
+#next-linus .linus-eye {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: linus-blink 4.6s infinite;
+}
+
+@keyframes linus-blink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  93%, 96%      { transform: scaleY(0.08); }
+}
+
+
+#next-linus .linus-kit-kat {
+  transform-box: fill-box;
+  transform-origin: 40% 90%;
+  animation: linus-sip 7s ease-in-out infinite;
+}
+
+@keyframes linus-sip {
+  0%, 68%, 100% { transform: rotate(0deg); }
+  76%           { transform: rotate(-3deg); }
+  84%           { transform: rotate(2deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #next-linus .linus-anim,
+  #next-linus .linus-eye,
+  #next-linus .linus-kit-kat {
+    animation: none;
+  }
+}
+
