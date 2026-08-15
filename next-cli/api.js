@@ -8,7 +8,7 @@ function createClient({ baseUrl, token }) {
     }
 
     const response = await fetch(url, {
-      headers: { Authorization: 'Bearer' + token},
+      headers: { Authorization: `Bearer ${token}` },
     });
 
     if (!response.ok) {
