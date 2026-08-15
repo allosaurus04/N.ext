@@ -3,7 +3,7 @@
   "version": "1.3.4",
   "description": "A Chrome extension for NUS students",
   "bin": {
-    "next-cli": "./cli/index.js"
+    "next-cli": "next-cli/cli/commands/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

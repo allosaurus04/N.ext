@@ -46,7 +46,7 @@ function getDeadlines() {
             const futureDate = new Date(Date.now() + LookAheadDays * 86400000);
             async function fetchDeadlines() {
                 const response = await fetch(
-                    `/api/v1/planner/items?end_date=${futureDate.toISOString()}&per_page=${MaxDeadlines}`
+                    `/api/v1/planner/items?end_date=${futureDate.toISOString()}&per_page=100`
                 );
                 const data = await response.json();
                 const uncompletedTasks = data.filter(
@@ -121,8 +121,11 @@ function injectDownloadButton(card, courseId) {
   btn.dataset.courseId = courseId;
   btn.className = "download-btn";
   btn.innerHTML = `<img class="download-btn-img" src="${chrome.runtime.getURL("assets/download.png")}">`;
-  card.querySelector(".ic-DashboardCard__header_hero").appendChild(btn);
-} //canvas changed DOM, .ic-DashboardCard__header_image to .ic-DashboardCard__header_hero. Ran in devtools document.querySelector(".ic-DashboardCard").innerHTML
+  card.querySelector(".ic-DashboardCard__header").appendChild(btn);
+} 
+//canvas changed DOM, .ic-DashboardCard__header_image to .ic-DashboardCard__header_hero. Ran in devtools document.querySelector(".ic-DashboardCard").innerHTML
+
+// got opacity issue now (courses that got background the download button doesnt show), moved it out of hero 
 
 function getTasksForCourse(data, courseId) {
   return data.filter(
