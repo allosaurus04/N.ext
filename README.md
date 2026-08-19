@@ -2,7 +2,7 @@
 
 A Chrome extension that makes Canvas better for NUS students. It includes deadlines on your dashboard cards, one-click course file downloads, and an NUS-themed skin. Comes with a companion CLI for anyone who'd rather live in the terminal.
 
-<!-- ![LiNUS on the dashboard](docs/screenshot-dashboard.png) -->
+![Deadlines](docs/screenshot-deadlines.png)
 
 ---
 
@@ -18,9 +18,9 @@ To switch: open your Canvas dashboard → click the **⋮** menu in the top-righ
 
 ### Deadlines on your course cards
 
-Every dashboard card gets a list of upcoming assignments and quizzes, sorted by urgency, with a colour-coded countdown: red when it's overdue, amber when it's close, green when you've got time. Only uncompleted work shows up; anything you've already submitted disappears on its own.
+Every dashboard card gets a list of upcoming assignments and quizzes, sorted by urgency, with a colour-coded countdown: red when it's overdue, amber when it's close, green when you've got time. Only uncompleted work shows up; anything you've already submitted disappears on its own. 
 
-<!-- ![Deadlines on a card](docs/screenshot-deadlines.png) -->
+![Linus on dashboard](docs/screenshot-dashboard.png)
 
 Two settings in the popup control what you see:
 
@@ -43,7 +43,7 @@ Each card gets a download button in its header. One click grabs every file from 
 
 A small lion sits in the corner of your dashboard and reacts to your workload; relaxed with a Kit Kat when you're clear, jittery when you're buried, and openly crying when something's overdue.
 
-<!-- ![LiNUS moods](docs/linus-moods.png) -->
+![LiNUS moods](docs/linus-moods.png)
 
 ### NUS theme
 
@@ -52,8 +52,6 @@ Recolours Canvas in NUS blue and orange: navy gradient header, orange primary bu
 ---
 
 ## Install
-
-Not on the Chrome Web Store yet, so it's a manual load:
 
 1. Download the latest `n.ext-vX.X.X.zip` from [Releases](https://github.com/allosaurus04/N.ext/releases) and unzip it or clone the repo and use the `extension/` folder directly.
 2. Go to `chrome://extensions`.
