@@ -81,3 +81,11 @@ function applyDeadlineDimming(isEnabled) {
     document.getElementById('val-per-subject').textContent = stored.MaxDeadlines;
   });
 })();
+
+// clearing ignored deadlines feature
+document.getElementById('reset-ignored').addEventListener('click', (e) => {
+  chrome.storage.sync.set({ ignoredTasks: []}, () => {
+    e.target.textContent = 'Cleared';
+    setTimeout(() => { e.target.textContent = 'Reset ignored deadlines'; }, 1200);
+  });
+});

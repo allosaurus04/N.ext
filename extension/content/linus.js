@@ -69,6 +69,19 @@ const LINUS_SVG = `
       </g>
       <ellipse cx="177" cy="168" rx="11" ry="9" fill="#F5B879"/>
     </g>
+    <!-- tears (cry) -->
+    <g class="linus-tears" fill="#5FA8F5">
+    <ellipse class="linus-tear" cx="97" cy="116" rx="3" ry="5"/>
+    <ellipse class="linus-tear" cx="143" cy="116" rx="3" ry="5"/>
+  </g>
+  <g class="linus-sweat" fill="#7FC4F8">
+  <ellipse cx="82" cy="78" rx="3.5" ry="6"/>
+  <ellipse cx="160" cy="72" rx="3" ry="5"/>
+  </g>
+  <g class="linus-brows" stroke="#1C2B66" stroke-width="2.6" stroke-linecap="round" fill="none">
+  <path d="M 92 92 Q 100 88 107 92"/>
+  <path d="M 133 92 Q 140 88 148 92"/>
+  </g>
   </g>
 </svg>`;
 
@@ -89,9 +102,9 @@ function setLinusMood(mood) {
 }
 
 function updateLinusMood(deadlineCount, hasOverdue, hasCompleted) {
-  if (hasOverdue) return setLinusMood('cry');
+  if (hasCompleted) return setLinusMood('treat'); //bug cant see treat mood 
+  if (hasOverdue)   return setLinusMood('cry');
   if (deadlineCount > 5) return setLinusMood('stress');
-  if (hasCompleted) return setLinusMood('treat');
   setLinusMood('none');
 }
 injectLinus();

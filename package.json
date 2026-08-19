@@ -1,6 +1,6 @@
 {
   "name": "N.ext",
-  "version": "1.3.4",
+  "version": "1.0.0",
   "description": "A Chrome extension for NUS students",
   "bin": {
      "next-cli": "./next-cli/index.js" 

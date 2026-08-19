@@ -10,11 +10,12 @@
   padding: 0;
   border: none;
   border-radius: 50%;
-  background:  none;
+  background: none;
   line-height: 0;
   cursor: pointer;
   opacity: 0.85;
   transition: transform 0.15s ease, opacity 0.15s ease;
+  z-index: 2;
 }
 
 .download-btn:hover {
@@ -28,4 +29,21 @@
   height: 32px;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
 }
-.ic-DashboardCard__header { position: relative; }
+
+
+.ic-DashboardCard__header,
+.ic-DashboardCard__header_hero { position: relative; }
+
+.deadline-dismiss {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+  padding: 0 4px;
+  opacity: 0;
+  color: #666;
+  transition: opacity 0.15s ease;
+}
+.deadline-container:hover .deadline-dismiss { opacity: 1; }
+.deadline-dismiss:hover { color: #000; }

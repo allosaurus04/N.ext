@@ -17,8 +17,8 @@
   "content_scripts": [
     {
       "matches": ["https://canvas.nus.edu.sg/*"],
-      "js": ["content/content.js", "content/file_downloader.js", "content/linus.js"],
-      "css": ["content/content.css", "content/theme.css", "content/linus.css"]
+      "js": ["content/linus.js", "content/content.js", "content/file_downloader.js"],
+      "css": ["content/linus.css", "content/theme.css", "content/content.css"]
     }
   ],
   "web_accessible_resources": [

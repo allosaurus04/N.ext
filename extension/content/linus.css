@@ -61,4 +61,104 @@ html.next-nus-theme #next-linus {
     animation: none;
   }
 }
+#next-linus .linus-tears,
+#next-linus .linus-sweat,
+#next-linus .linus-brows {
+  opacity: 0;
+}
 
+#next-linus[data-mood="stress"] .linus-anim {
+  animation: linus-jitter 0.35s linear infinite;
+}
+#next-linus[data-mood="stress"] .linus-sweat {
+  opacity: 1;
+  animation: linus-drip 1.4s ease-in infinite;
+}
+#next-linus[data-mood="stress"] .linus-brows { opacity: 1; }
+#next-linus[data-mood="stress"] .linus-eye {
+  animation: linus-blink 1.6s infinite; 
+}
+#next-linus[data-mood="stress"] .linus-kit-kat { animation: none; }
+
+@keyframes linus-jitter {
+  0%, 100% { transform: translate(0, 0); }
+  25%      { transform: translate(-1.5px, 0.5px); }
+  50%      { transform: translate(1px, -0.5px); }
+  75%      { transform: translate(-0.5px, 1px); }
+}
+
+@keyframes linus-drip {
+  0%   { transform: translateY(0);   opacity: 1; }
+  80%  { transform: translateY(9px); opacity: 0.9; }
+  100% { transform: translateY(12px); opacity: 0; }
+}
+
+/*cry*/
+#next-linus[data-mood="cry"] .linus-anim {
+  animation: linus-droop 4.5s ease-in-out infinite;
+}
+#next-linus[data-mood="cry"] .linus-tears { opacity: 1; }
+#next-linus[data-mood="cry"] .linus-tear {
+  transform-box: fill-box;
+  animation: linus-tear-fall 1.8s ease-in infinite;
+}
+#next-linus[data-mood="cry"] .linus-tear:last-child {
+  animation-delay: 0.7s; 
+}
+#next-linus[data-mood="cry"] .linus-brows { opacity: 1; }
+#next-linus[data-mood="cry"] .linus-eye {
+  transform: scaleY(0.45); 
+  animation: none;
+}
+#next-linus[data-mood="cry"] .linus-kit-kat { animation: none; }
+
+@keyframes linus-droop {
+  0%, 100% { transform: translateY(0);}
+  50%      { transform: translateY(3px);}
+}
+
+@keyframes linus-tear-fall {
+  0%   { transform: translateY(0);    opacity: 0;}
+  15%  { opacity: 1; }
+  85%  { transform: translateY(22px); opacity: 0.8; }
+  100% { transform: translateY(26px); opacity: 0;}
+}
+
+/* treated*/
+#next-linus[data-mood="treat"] .linus-anim {
+  animation: linus-bounce 0.9s ease-in-out infinite;
+}
+#next-linus[data-mood="treat"] .linus-kit-kat {
+  animation: linus-wave 0.9s ease-in-out infinite;
+}
+
+@keyframes linus-bounce {
+  0%, 100% { transform: translateY(0); }
+  40%      { transform: translateY(-8px); }
+  60%      { transform: translateY(-8px); }
+}
+
+@keyframes linus-wave {
+  0%, 100% { transform: rotate(0deg); }
+  50%      { transform: rotate(-10deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #next-linus [class^="linus-"],
+  #next-linus [class*=" linus-"] {
+    animation: none !important;
+  }
+}
+
+.deadline-dismiss {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+  padding: 0 4px;
+  opacity: 0;
+  color: #666;
+  transition: opacity 0.15s ease;
+}
+.deadline-container:hover .deadline-dismiss { opacity: 1;}

@@ -8,7 +8,7 @@ on:
     branches: [main]
 
 jobs:
-  lint: # code quality
+  lint: #code quality
     runs-on: ubuntu-latest
     steps:
       - name: checkout
