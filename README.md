@@ -39,7 +39,7 @@ Changed your mind? **Reset ignored deadlines** in the popup's Deadlines tab clea
 
 Each card gets a download button in its header. One click grabs every file from that course's Files section and drops it in your Downloads folder, with filenames sanitised so Windows doesn't choke on them.
 
-### LiNUS
+### LiNUS, a Canvas pet
 
 A small lion sits in the corner of your dashboard and reacts to your workload; relaxed with a Kit Kat when you're clear, jittery when you're buried, and openly crying when something's overdue.
 
