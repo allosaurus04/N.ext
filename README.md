@@ -20,7 +20,9 @@ To switch: open your Canvas dashboard → click the **⋮** menu in the top-righ
 
 Every dashboard card gets a list of upcoming assignments and quizzes, sorted by urgency, with a colour-coded countdown: red when it's overdue, amber when it's close, green when you've got time. Only uncompleted work shows up; anything you've already submitted disappears on its own. 
 
-![Linus on dashboard](docs/screenshot-dashboard.png)
+<p align="center">
+  <img src="docs/screenshot-dashboard.png" alt="Linus on dashboard" width="400">
+</p>
 
 Two settings in the popup control what you see:
 
