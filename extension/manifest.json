@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "N.ext",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Chrome extension for Canvas, made for NUS students. Hence, the name N.ext.",
   "icons": {
   "16": "assets/icon16.png",
