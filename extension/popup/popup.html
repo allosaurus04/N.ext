@@ -77,19 +77,32 @@
     </section>
 
   <section id="panel-downloads" class="panel"> <!--dont edit class-->
-  <div class="setting-row">
-    <div class="setting-label-group">
-      <span class="setting-label">Download Buttons</span>
-      <span class="setting-sub">Show a download-all button on each course card.</span>
+    <div class="setting-row">
+      <div class="setting-label-group">
+        <span class="setting-label">Download Buttons</span>
+        <span class="setting-sub">Show a download-all button on each course card.</span>
+      </div>
+      <button class="toggle" data-key="isEnabledDownloads" role="switch" aria-checked="true">
+        <span class="toggle-knob"></span>
+      </button>
     </div>
-    <button class="toggle" data-key="isEnabledDownloads" role="switch" aria-checked="true">
-      <span class="toggle-knob"></span>
-    </button>
-  </div>
-</section>
+  </section>
+  <section id="panel-site" class="panel">
+    <div class="setting-row">
+      <div class="setting-label-group">
+        <span class="setting-label">NUS theme</span>
+        <span class="setting-sub">Turn off to restore Canvas's default look.</span>
+      </div>
+      <button class="toggle" data-key="DisableUI" role="switch" aria-checked="true">
+        <span class="toggle-knob"></span>
+      </button>
+    </div>
+  </section>
+</main>
+
 
   <footer class="footer">
-    <span>Version 1.0.0</span>
+    <span>Version 1.0.2</span>
     <span class="footer-sep">·</span>
     <a class="bug-link" href="https://github.com/anushakamran06" target="_blank" rel="noopener">Bug Reports
       <svg class="gh-icon" viewBox="0 0 16 16" width="13" height="13" fill="currentColor" aria-hidden="true">

@@ -1,12 +1,13 @@
 const DEFAULTS = {
   isEnabledDeadline: true,
+  isEnabledDownloads: true,
   LookAheadDays: 30,
   MaxDeadlines: 6,
   DisableUI: false,
 };
 
 (function initTabs() {
-  const buttons = document.querySelectorAll('.tab-btn');
+  const buttons = document.querySelectorAll('.tab-nav .tab-btn');
   const panels  = document.querySelectorAll('.panel');
 
   buttons.forEach(btn => {
@@ -37,7 +38,7 @@ function applyDeadlineDimming(isEnabled) {
       const next = !isOn;
       setToggleState(toggle, next);
       chrome.storage.sync.set({ [toggle.dataset.key]: next });
-
+// stored
       if (toggle.dataset.key === 'isEnabledDeadline') {
         applyDeadlineDimming(next);
       }
@@ -65,7 +66,7 @@ function applyDeadlineDimming(isEnabled) {
     document.querySelectorAll('.toggle').forEach(toggle => {
       const key = toggle.dataset.key;
       if (key in stored) {
-        setToggleState(toggle, stored[key]);
+        setToggleState(toggle, stored[key]); // loads what is stored
       }
     });
 
@@ -81,6 +82,7 @@ function applyDeadlineDimming(isEnabled) {
     document.getElementById('val-per-subject').textContent = stored.MaxDeadlines;
   });
 })();
+// toggle off it dims the sliders (@ 8 oct review)
 
 // clearing ignored deadlines feature
 document.getElementById('reset-ignored').addEventListener('click', (e) => {
