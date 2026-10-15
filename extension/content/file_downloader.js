@@ -1,3 +1,5 @@
+// no actual downloading here. background.js does that. here list of files to be downloaded is being built.
+
 document.addEventListener('click', (event) => {
     const btn = event.target.closest('.download-btn');
     if (!btn || btn.disabled == true) return;
