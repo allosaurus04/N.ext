@@ -72,19 +72,17 @@ function getDeadlines() {
       // per_page is a GLOBAL cap on planner items, not per course.
       // MaxDeadlines is applied per card in renderDeadlines().
       async function fetchDeadlines() {
-        const response = await fetch(
-          `/api/v1/planner/items?end_date=${futureDate.toISOString()}&per_page=100`
+        const startDate = new Date(Date.now() - 14 * 86400000); // keep 2 weeks of overdue
+        const data = await fetchAllPlannerItems(
+          `/api/v1/planner/items?start_date=${startDate.toISOString()}&end_date=${futureDate.toISOString()}&per_page=100`
         );
-        if (!response.ok) throw new Error(`Planner API ${response.status}`);
-
-        const data = await response.json();
+        
         console.log("N.ext: planner items received:", data.length);
-
         const uncompletedTasks = data.filter(task =>
           (task.plannable_type === "assignment" || task.plannable_type === "quiz") &&
-          (task.submissions === false || !task.submissions?.submitted) &&
-          !ignored.has(task.plannable_id)
+          (task.submissions === false || !task.submissions?.submitted) && !ignored.has(task.plannable_id)
         );
+
         console.log(
           "N.ext: after filtering:", uncompletedTasks.length,
           "| ignored ids:", [...ignored]
@@ -109,6 +107,17 @@ function getDeadlines() {
         .finally(() => { isFetching = false; });
     }
   );
+}
+async function fetchAllPlannerItems(url) {
+  let items = [];
+  while (url) {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`Planner API ${res.status}`);
+    items = items.concat(await res.json());
+    const next = res.headers.get("link")?.match(/<([^>]+)>;\s*rel="next"/);
+    url = next ? next[1] : null;
+  }
+  return items;
 }
 const URGENCY = {
   overdue: "#fc07be",
