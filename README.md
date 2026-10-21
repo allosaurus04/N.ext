@@ -49,7 +49,7 @@ Each card gets a download button in its header. One click grabs every file from 
 
 A small lion sits in the corner of your dashboard and reacts to your workload; relaxed with a Kit Kat when you're clear, jittery when you're buried, and openly crying when something's overdue.
 
-![LiNUS moods](docs/linus-moods.png)
+![LiNUS moods](docs/linus_moods.gif)
 
 ### NUS theme
 
