@@ -1,5 +1,7 @@
 # N.ext
 
+![Guide](docs/next_guide.gif)
+
 (latest edit: Deadlines for later part of semester were not appearing (WK 5/6 onwards) due to per_page limit being 100 only. They are now visible) 
 
 A Chrome extension that makes Canvas better for NUS students. It includes deadlines on your dashboard cards, one-click course file downloads, and an NUS-themed skin. Comes with a companion CLI for anyone who'd rather live in the terminal.
