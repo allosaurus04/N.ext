@@ -1,8 +1,8 @@
 # N.ext
 
-![Guide](docs/next_guide.gif)
+(latest edit: Deadlines for later part of semester were not appearing (Week 5/6 onwards) due to per_page limit being 100 only. They are now visible) 
 
-(latest edit: Deadlines for later part of semester were not appearing (WK 5/6 onwards) due to per_page limit being 100 only. They are now visible) 
+![Guide](docs/next_guide.gif)
 
 A Chrome extension that makes Canvas better for NUS students. It includes deadlines on your dashboard cards, one-click course file downloads, and an NUS-themed skin. Comes with a companion CLI for anyone who'd rather live in the terminal.
 
@@ -10,16 +10,6 @@ A Chrome extension that makes Canvas better for NUS students. It includes deadli
 Find it in the official Chrome Store: https://chromewebstore.google.com/detail/next/okcoipmpidabfhofkjgladnhjbfdjfhg
 
 ![Deadlines](docs/screenshot-deadlines.png)
-
----
-
-## ⚠️ Use the new dashboard view
-
-N.ext injects into Canvas's **Card View** dashboard. If your dashboard is set to List View or Recent Activity, nothing will appear.
-
-To switch: open your Canvas dashboard → click the **⋮** menu in the top-right → select **Card View**.
-
----
 
 ## Features
 
