@@ -44,12 +44,6 @@ A small lion sits in the corner of your dashboard and reacts to your workload; r
 
 ![LiNUS moods](docs/linus_moods.gif)
 
-### NUS theme
-
-Recolours Canvas in NUS blue and orange: navy gradient header, orange primary buttons, hard-shadowed dashboard cards, and a ten-course palette so your modules stay visually distinct. Toggle it off in the **Site** tab to get plain Canvas back.
-
----
-
 ## The CLI
 
 > **Note to Users:** The CLI is a separate feature that requires access to the Canvas API. It was built for developers who prefer interacting with Canvas from the terminal. The browser extension, however, works independently so no Canvas API setup, authentication, or programming knowledge is required. If you're interested in the CLI, see the [`next-cli/`](next-cli/) folder for setup instructions and documentation on accessing Canvas in-terminal.
@@ -87,8 +81,6 @@ N.ext has no backend. Every request goes directly from your browser (or your ter
 ---
 
 ## Contributing
-
-This readme was created using ChatGPT. The project is not however, so there may be bugs. 
 
 Bug reports and feature requests welcome: [open an issue](https://github.com/allosaurus04/N.ext/issues).
 
