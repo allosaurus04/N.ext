@@ -6,6 +6,9 @@
 
 A Chrome extension that makes Canvas better for NUS students. It includes deadlines on your dashboard cards, one-click course file downloads, and an NUS-themed skin. Comes with a companion CLI for anyone who'd rather live in the terminal.
 
+## Install
+Find it in the official Chrome Store: https://chromewebstore.google.com/detail/next/okcoipmpidabfhofkjgladnhjbfdjfhg
+
 ![Deadlines](docs/screenshot-deadlines.png)
 
 ---
@@ -54,18 +57,6 @@ A small lion sits in the corner of your dashboard and reacts to your workload; r
 ### NUS theme
 
 Recolours Canvas in NUS blue and orange: navy gradient header, orange primary buttons, hard-shadowed dashboard cards, and a ten-course palette so your modules stay visually distinct. Toggle it off in the **Site** tab to get plain Canvas back.
-
----
-
-## Install
-
-1. Download the latest `n.ext-vX.X.X.zip` from [Releases](https://github.com/allosaurus04/N.ext/releases) and unzip it or clone the repo and use the `extension/` folder directly.
-2. Go to `chrome://extensions`.
-3. Turn on **Developer mode** (top-right).
-4. Click **Load unpacked** and select the unzipped folder.
-5. Open [canvas.nus.edu.sg](https://canvas.nus.edu.sg) and reload the tab.
-
-> If you reload the extension after making changes, reload the Canvas tab too. Content scripts from the previous version get orphaned and silently stop working.
 
 ---
 
