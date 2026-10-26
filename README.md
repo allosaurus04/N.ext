@@ -9,17 +9,13 @@ A Chrome extension that makes Canvas better for NUS students. It includes deadli
 ## Install
 Find it in the official Chrome Store: https://chromewebstore.google.com/detail/next/okcoipmpidabfhofkjgladnhjbfdjfhg
 
-![Deadlines](docs/screenshot-deadlines.png)
-
 ## Features
 
 ### Deadlines on your course cards
 
 Every dashboard card gets a list of upcoming assignments and quizzes, sorted by urgency, with a colour-coded countdown: red when it's overdue, amber when it's close, green when you've got time. Only uncompleted work shows up; anything you've already submitted disappears on its own. 
 
-<p align="center">
-  <img src="docs/screenshot-dashboard.png" alt="Linus on dashboard" width="400">
-</p>
+![Deadlines](docs/screenshot-deadlines.png)
 
 Two settings in the popup control what you see:
 
@@ -33,6 +29,10 @@ Two settings in the popup control what you see:
 Some assignments don't count toward your grade and you're never going to do them. Hover a deadline row and hit the **×** to ignore it. It disappears from the card and stops affecting anything downstream.
 
 Changed your mind? **Reset ignored deadlines** in the popup's Deadlines tab clears the whole list.
+
+<p align="center">
+  <img src="docs/screenshot-dashboard.png" alt="Linus on dashboard" width="400">
+</p>
 
 ### Download an entire course's files
 
